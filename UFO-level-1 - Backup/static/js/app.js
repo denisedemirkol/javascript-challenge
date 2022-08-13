@@ -25,15 +25,16 @@ function runEnter() {
 
     console.log(p_date)
 
-    if (inputValue != "") {      
-      var filteredData = data.filter(ufo => new Date(ufo.datetime).toDateString()  === p_date.toDateString());        
+    if (inputValue != "") {
+      var filteredData = data.filter(ufo => (ufo.datetime) === inputValue);        
     }
     else // if no filter entered, display everything
     {
       var filteredData = data      
     }  
 
-
+    //var tbody   = d3.select("tbody");
+ 
       // Clear the table 
           var tableHeaderRowCount = 1;
           var table = document.getElementById('ufo-table');

@@ -27,7 +27,7 @@
     </div>
     <div class="container">
       <div class="row margin-top-50">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <aside class="filters">
             <div class="panel panel-default">
               <div class="panel-heading">Filter Search</div>
@@ -39,6 +39,26 @@
                         <label for="date">Enter a Date</label>
                         <input class="form-control" id="datetime" type="text" placeholder="1/11/2011">
                       </li>
+                     
+                      <li class="filter list-group-item">
+                        Subjects: <select name="subject" id="subject">
+                        <option value="" selected="selected">Select subject</option>
+                      </select>
+                      </li>
+                                       
+                      <li class="filter list-group-item">  
+                      Topics: <select name="topic" id="topic">
+                        <option value="" selected="selected">Please select subject first</option>
+                      </select>
+                      </li>
+
+                      <li class="filter list-group-item"> 
+                      Chapters: <select name="chapter" id="chapter">
+                        <option value="" selected="selected">Please select topic first</option>
+                      </select>
+                      </li>
+                    
+                    
                     </ul>
                   </div>
                   <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
@@ -47,7 +67,7 @@
             </div>
           </aside>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-9">
           <div id="table-area" class="">
             <table id="ufo-table" class="table table-striped">
               <thead>
