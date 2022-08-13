@@ -58,9 +58,13 @@ function runEnter() {
 
 button.on("click", runEnter);
 
-window.onload = function() {
-  console.log("Page load")
 
+
+
+
+
+
+window.onload = function() {
    data.forEach((data) => {
     var row = tbody.append("tr");
           
