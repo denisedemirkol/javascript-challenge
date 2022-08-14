@@ -13,6 +13,25 @@ button.on("click", runEnter);
 form.on("submit",runEnter);
 
 
+shapes =[]  
+
+
+function load_options() {
+
+  Object.entries(tableData).forEach(([key, value]) => {    
+
+
+      if(shapes.indexOf(value["shape"]) === -1) {
+             shapes.push(value["shape"]);
+      }
+
+  });
+
+  shapes.sort() 
+}
+
+
+
 // Complete the event handler function for the form
 function runEnter() {
 
@@ -34,11 +53,16 @@ function runEnter() {
     var inputCity           = d3.select("#cityList");  
     var inputCityValue      = inputCity.property("value");
 
+    var inputShape          = d3.select("#shapeList");  
+    var inputShapeValue     = inputShape.property("value");
+
 
     let filteredValues = data.filter(function (currentElement) {
       return (currentElement.country  == inputCountryValue  || inputCountryValue == "")
           && (currentElement.state    == inputStateValue    || inputStateValue == "")
-          && (currentElement.city     == inputCityValue     || inputCityValue == "");
+          && (currentElement.city     == inputCityValue     || inputCityValue == "")
+          && (currentElement.shape    == inputShapeValue    || inputShapeValue == "")
+          ;
     });
 
 
@@ -125,27 +149,39 @@ us: {
 };
 
 
-
-
 window.onload = function() {
  
+shapes =[]  
+v_worlddata = {}
 
-     
+load_options()
+
+  // Table load
+
   data.forEach((data) => {
     var row = tbody.append("tr");
           
     Object.entries(data).forEach(([key, value]) => {
           var cell = row.append("td");
           cell.text(value);      
+
           });
-    });
+    });  // end of data
+
 
 
 
       var countryList = document.getElementById("countryList"),
-          stateList = document.getElementById("stateList"),
-          cityList = document.getElementById("cityList");
+          stateList   = document.getElementById("stateList"),
+          cityList    = document.getElementById("cityList"),
+          shapeList   = document.getElementById("shapeList");
       
+
+       for (var i = 0; i < shapes.length; i++) {
+            shapeList.options[shapeList.options.length] = new Option(shapes[i], shapes[i]);
+       }
+  
+          
 
       for (var country in worldData) {
           countryList.options[countryList.options.length] = new Option(country, country);
